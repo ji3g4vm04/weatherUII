@@ -1,0 +1,210 @@
+@import "cssreset";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@mixin fontStyle($fs,$lh) {
+  font-size: $fs;
+  line-height: $lh;
+}
+*{
+  box-sizing: border-box;
+}
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('../58148540_p0_master1200.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.wrap{
+  font-family: 'Roboto', sans-serif;
+}
+.squareCubes{
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  .cube{
+    border-radius: 10px;
+    width: 184px;
+    height: 224px;
+    padding: 13px 9px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 8px 8px rgba(128, 128, 128, 0.25);
+    *{
+      color: #fff;
+    }
+    .cubeHeader,.temperature,.location{
+      display: flex;
+    }
+    .location,.cubeHeader{
+      width: 100%;
+      justify-content: space-between;
+    }
+    .cubeHeader{
+      h2{
+        @include fontStyle(14px,16.41px);
+      }
+    }
+    .temperature{
+      h2{
+        @include fontStyle(72px,84.38px);
+        span{
+          @include fontStyle(14px,16.41px);
+        }
+      }
+    }
+    .location{
+      @include fontStyle(12px,14.06px )
+    }
+  }
+  .cube:nth-child(1){
+    background: linear-gradient(180.55deg, #0453ED -45.32%, #38E2F9 125.84%);
+  }
+  .cube:nth-child(2){
+    background: linear-gradient(180deg, #00E7CB -11.22%, #28007E 100%);
+  }
+  .cube:nth-child(3){
+    background: #200063;
+  }
+}
+@media (max-width:620px){
+  .squareCubes{
+    margin: 0 auto;
+    width: 400px;
+    justify-content: center;
+    flex-wrap: wrap;
+    .cube{
+      margin: 0 8px 16px 8px;
+    }
+  }
+}
+@media (max-width:400px){
+  .squareCubes{
+    
+    width: 300px;
+  }
+}
+.weatherLabel{
+  color: #fff;
+  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 36px;
+  .label{
+    margin-bottom: 29px;
+    width: 47%;
+    height: 65px;
+    border-radius: 10px;
+    padding: 18px 30px 18px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    .locationDetail{
+      .local{
+        @include fontStyle(10px,11.72px );
+        margin-bottom: 3px;
+      }
+      .time{
+        @include fontStyle(12px,14px )
+      }
+    }
+    .temperature{
+      display: flex;
+      align-items: center;
+      h2{
+        @include fontStyle(24px,28.13px );
+        margin-left: 10px;
+        span{
+          @include fontStyle(12px,14.06px )
+        }
+      }
+    }
+  }
+  .label:nth-child(1){
+    background: linear-gradient(90deg, #38E2F9 -25.19%, #0453ED 101.74%);
+  }
+  .label:nth-child(2){
+    background: linear-gradient(90deg, #00E9E9 -5.23%, #28007E 100%);
+  }
+  .label:nth-child(3){
+    background: #333333;
+  }
+  .label:nth-child(4){
+    background: #200063;
+  }
+}
+@media (max-width:460px){
+  .weatherLabel{
+    justify-content: center;
+    padding: 0;
+    .label{
+      width: 90%;
+    }
+  }
+}
+@media (max-width:300px){
+  .weatherLabel{
+    width: 100%;
+    padding: 0;
+  }
+}
+
+
+.icon{
+  position: relative;
+  .cloud{
+    position: relative;
+    z-index: 10;
+    background: #fff;
+    width: 35px;
+    height: 15px;
+    border-radius: 30px;
+    &::after{
+      z-index: 10;
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      top: -50%;
+      left: 22%;
+    }
+  }
+  .sun{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    z-index: 1;
+    background: linear-gradient(180deg, #FFC700 0%, #FFA654 100%);
+    right: 5px;
+    top: -8px;
+  }
+  .thunder{
+    z-index: 20;
+    position: absolute;
+    background: linear-gradient(180deg, #FFC700 0%, #FFA654 100%);
+    clip-path: polygon(79% 0, 55% 39%, 75% 65%, 35% 100%, 51% 66%, 31% 34%);
+    width: 20px;
+    height: 20px;
+    bottom: -5px;
+    right: 3px;
+  }
+  .rain{
+    position: absolute;
+    z-index: 20;
+    width: 10px;
+    height: 20px;
+    background: #38E2F9;
+    clip-path: polygon(50% 0, 100% 70%, 100% 100%, 0 100%, 0 70%);
+    border-radius: 0 0 30px 30px;
+    bottom: -5px;
+    right: 5px;
+  }
+}
